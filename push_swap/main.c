@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/29 14:10:32 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/29 16:46:16 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ int	main(int argc, char **argv)
 		ft_stderror();
 	if (!prepare_sort(stack))
 		ft_stderror();
-	print_inttab(stack->sorted, stack->elems);
-	print_inttab(stack->pivots, stack->chunks - 1);
+	//print_inttab(stack->sorted, stack->elems);
+	//print_inttab(stack->pivots, stack->chunks - 1);
 	push_chunks(stack);
+	push_big_pp(stack);
 	//print_stack(stack->a, 'a');
 	//print_stack(stack->b, 'b');
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:36:29 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/29 14:03:47 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/29 16:15:21 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int					prepare_sort(t_mem *stack);
 ** Sort
  */
 
+int	push_big_pp(t_mem *stack);
 int push_chunks(t_mem *stack);
 
 

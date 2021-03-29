@@ -1,0 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 14:12:03 by pmaldagu          #+#    #+#             */
+/*   Updated: 2021/03/29 11:45:37 by pmaldagu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./push_swap.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n <= 9 && n >= 0)
+		ft_putchar(n + 48);
+	else if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	else if (n == -2147483648)
+		write(1, "-2147483648", 11);
+	else
+	{
+		ft_putchar('-');
+		ft_putnbr(n * -1);
+	}
+}
+
+void	print_inttab(int *tab, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putnbr(tab[i]);
+		write(1, " ", 1);
+		i++;
+	}
+	write(1, "\n", 1);
+}
+
+void	print_stack(t_stack *to_print, char which)
+{
+	t_stack *tmp;
+
+	tmp = to_print;
+	write(1, "Stack ", 6);
+	write(1, &which, 1);
+	write(1, ": ", 2);
+	while (tmp)
+	{
+		ft_putnbr(tmp->integer);
+		write(1, " ", 1);
+		tmp = tmp->next;
+	}
+	write(1, "\n", 1);
+}

@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:36:29 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/29 16:15:21 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/30 18:00:20 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ typedef struct		s_stack
 {
 	int				integer;
 	struct s_stack	*next;
-	struct s_stack	*previous;
-	struct s_satck	*end;
+	struct s_stack	*previous;;
 }					t_stack;
 
 typedef struct		s_mem
@@ -32,7 +31,9 @@ typedef struct		s_mem
 	int				elems;
 	int				*sorted;
 	int				chunks;
+	int 			size;
 	int				*pivots;
+	int				debug;
 }					t_mem;
 
 /*
@@ -90,12 +91,33 @@ int					sorting(t_mem *stack);
 int					prepare_sort(t_mem *stack);
 
 /*
+** Shortsort
+ */
+
+int					is_in_order(t_mem *stack, t_stack *tmp);
+int					size_3(t_mem *stack, t_stack *tmp);
+int					size_4(t_mem *stack, t_stack *tmp);
+int					size_5(t_mem *stack, t_stack *tmp);
+int					how_to_sort(t_mem *stack);
+
+/*
+** Optimsation
+ */
+
+int					who_is_the_nearest(t_mem *stack, int pos_pivot);
+int					nearest_by_pair(t_mem *stack, int pos_pivot, int *rb);
+int					sort_opti(t_mem *stack);
+int					push_b(t_mem *stack);
+
+/*
 ** Sort
  */
 
-int	push_big_pp(t_mem *stack);
-int push_chunks(t_mem *stack);
-
+int					push_big_pp(t_mem *stack);
+int					reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option);
+int					push_big_pp(t_mem *stack);
+int					push_chunks(t_mem *stack);
+int					big_sort(t_mem *stack);
 
 /*
 ** Main

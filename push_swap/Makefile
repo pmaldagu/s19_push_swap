@@ -5,7 +5,9 @@ SRC = main.c \
 	  arg.c \
 	  utils.c \
 	  prepare.c \
-	  sort.c 
+	  sort.c \
+	  shortsort.c \
+	  optimisation.c 
 
 OBJ = $(SRC:%.c=%.o)
 

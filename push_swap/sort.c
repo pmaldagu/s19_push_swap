@@ -1,34 +1,5 @@
 #include "./push_swap.h"
 
-//int hold_second(t_stack *a, int pivot)
-//{
-//	int i;
-//	int pos;
-//
-//	i = 0;
-//	while (a)
-//	{
-//		if (a->integer <= pivot)
-//			pivot = i;
-//		a = a->next;
-//		i++;
-//	}
-//	return (pos);
-//}
-//
-//int	hold_first(t_stack *a, int pivot)
-//{
-//	int pos;
-//
-//	pos = 0;
-//	while (a && a->integer > pivot)
-//	{
-//		a = a->next;
-//		pos++;
-//	}
-//	return (pos);
-//}
-
 int push_chunks(t_mem *stack)
 {
 	int i;
@@ -62,13 +33,11 @@ int push_chunks(t_mem *stack)
 	return (1);
 }
 
-int reverse_or_not(t_mem *stack, int pos)
+int reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option)
 {
-	t_stack *tmp;
 	int i;
 
 	i = 0;
-	tmp = stack->b;
 	while (tmp)
 	{
 		tmp = tmp->next;
@@ -78,7 +47,7 @@ int reverse_or_not(t_mem *stack, int pos)
 	{
 		while (pos)
 		{
-			instruction(stack, rotate, 'b');
+			instruction(stack, rotate, option);
 			pos--;
 		}
 	}
@@ -86,7 +55,7 @@ int reverse_or_not(t_mem *stack, int pos)
 	{
 		while (pos < i)
 		{
-			instruction(stack, reverse_rotate, 'b');
+			instruction(stack, reverse_rotate, option);
 			pos++;
 		}
 	}
@@ -117,8 +86,16 @@ int push_big_pp(t_mem *stack)
 			tmp = tmp->next;
 			i++;
 		}
-		reverse_or_not(stack, pos);
+		reverse_or_not(stack, stack->b, pos, 'b');/////////
 		instruction(stack, push, 'a');
 	}
+	return (1);
+}
+
+int big_sort(t_mem *stack)
+{
+	//push_chunks(stack);
+	sort_opti(stack);
+	push_big_pp(stack);
 	return (1);
 }

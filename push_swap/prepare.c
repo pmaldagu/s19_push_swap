@@ -6,29 +6,29 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:44:38 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:23:56 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:27:50 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int     get_nbr_chunck(int size)
+int	get_nbr_chunck(int size)
 {
 	if (size < 10)
 		return (2);
-    if (size < 99)
-        return (5);
-    else if (size < 495)
-        return (8);
-    else
-        return (17);
+	if (size < 99)
+		return (5);
+	else if (size < 495)
+		return (8);
+	else
+		return (17);
 }
 
 int	find_pivots(t_mem *stack)
 {
-	int i;
+	int	i;
 	int	stop;
-	int pos;
+	int	pos;
 
 	i = 0;
 	stack->chunks = get_nbr_chunck(stack->elems);
@@ -49,11 +49,11 @@ int	find_pivots(t_mem *stack)
 	return (1);
 }
 
-int sorting(t_mem *stack)
+int	sorting(t_mem *stack)
 {
-	int i;
-	int j;
-	int swap;
+	int	i;
+	int	j;
+	int	swap;
 
 	i = 0;
 	while (i < stack->elems - 1)
@@ -76,7 +76,7 @@ int sorting(t_mem *stack)
 
 int	prepare_sort(t_mem *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 
 	tmp = stack->a;

@@ -6,13 +6,13 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:36:55 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:27:21 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:32:22 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int			push(t_stack **first, t_stack **second)
+int	push(t_stack **first, t_stack **second)
 {
 	t_stack	*tmp;
 
@@ -25,7 +25,7 @@ int			push(t_stack **first, t_stack **second)
 	return (1);
 }
 
-int			swap(t_stack **first, t_stack **useless)
+int	swap(t_stack **first, t_stack **useless)
 {
 	t_stack	*swap;
 
@@ -39,12 +39,12 @@ int			swap(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			reverse_rotate(t_stack **first, t_stack **useless)
+int	reverse_rotate(t_stack **first, t_stack **useless)
 {
 	t_stack	*tmp;
 	t_stack	*end;
 
-	tmp = NULL;	
+	tmp = NULL;
 	if (!(*first) || !(*first)->next)
 		return (0);
 	end = (*first);
@@ -59,14 +59,14 @@ int			reverse_rotate(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			rotate(t_stack **first, t_stack **useless)
+int	rotate(t_stack **first, t_stack **useless)
 {
 	t_stack	*tmp;
 	t_stack	*second;
 
 	second = NULL;
 	tmp = NULL;
-	if(!(*first) || !(*first)->next)
+	if (!(*first) || !(*first)->next)
 		return (0);
 	second = (*first)->next;
 	tmp = second;
@@ -78,7 +78,7 @@ int			rotate(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			instruction(t_mem *stack, int (*ope)(t_stack **, t_stack **), char option)
+int	instruction(t_mem *stack, int (*ope)(t_stack **, t_stack **), char option)
 {
 	if ((*ope) == &rotate)
 		write(1, "r", 2);

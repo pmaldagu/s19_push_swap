@@ -6,15 +6,15 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 13:56:08 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/30 15:29:44 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:37:32 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int is_in_order(t_mem *stack, t_stack *tmp)
+int	is_in_order(t_mem *stack, t_stack *tmp)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (tmp)
@@ -27,19 +27,19 @@ int is_in_order(t_mem *stack, t_stack *tmp)
 	return (1);
 }
 
-int size_3(t_mem *stack, t_stack *tmp)
+int	size_3(t_mem *stack, t_stack *tmp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 1)
 	{
 		tmp = stack->a;
-		if (tmp->integer > tmp->next->integer &&
-				tmp->integer > tmp->next->next->integer)
+		if (tmp->integer > tmp->next->integer
+			&& tmp->integer > tmp->next->next->integer)
 			instruction(stack, rotate, 'a');
-		else if (tmp->integer < tmp->next->integer &&
-				tmp->next->integer > tmp->next->next->integer)
+		else if (tmp->integer < tmp->next->integer
+			&& tmp->next->integer > tmp->next->next->integer)
 			instruction(stack, reverse_rotate, 'a');
 		if (!is_in_order(stack, stack->a))
 			instruction(stack, swap, 'a');
@@ -51,8 +51,8 @@ int size_3(t_mem *stack, t_stack *tmp)
 int	size_4(t_mem *stack, t_stack *tmp)
 {
 	int	pos;
-	int min;
-	int i;
+	int	min;
+	int	i;
 
 	i = 0;
 	pos = 0;
@@ -79,8 +79,8 @@ int	size_4(t_mem *stack, t_stack *tmp)
 int	size_5(t_mem *stack, t_stack *tmp)
 {
 	int	pos;
-	int min;
-	int i;
+	int	min;
+	int	i;
 
 	i = 0;
 	pos = 0;

@@ -6,68 +6,82 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:31:24 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:58:44 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-t_mem *get_stack(void)
+void	init_struct(t_mem *stack)
 {
-	static t_mem stack;
+	stack->a = NULL;
+	stack->b = NULL;
+	stack->elems = 0;
+	stack->sorted = NULL;
+	stack->chunks = 0;
+	stack->size = 0;
+	stack->pivots = NULL;
+}
+
+t_mem	*get_struct(void)
+{
+	static t_mem	stack;
 
 	return (&stack);
 }
 
-void	ft_stderror(void)
+void	free_everything(t_mem *stack)
 {
-	t_mem *stack;
-	t_stack *tmp;
+	t_stack	*tmp;
 
-	stack = get_stack();
-	write(2, "Error\n", 6);
-	while(stack->a)
+	free(stack->sorted);
+	free(stack->pivots);
+	while (stack->a)
 	{
 		tmp = stack->a;
 		stack->a = stack->a->next;
 		free(tmp);
 	}
-	while(stack->b)
+	while (stack->b)
 	{
 		tmp = stack->b;
 		stack->b = stack->b->next;
 		free(tmp);
 	}
+}
+
+void	ft_stderror(void)
+{
+	t_mem	*stack;
+
+	stack = get_struct();
+	write(2, "Error\n", 6);
+	free_everything(stack);
 	exit(1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_mem *stack;
+	t_mem	*stack;
+	int	i;
 
-	stack = get_stack(); 
-	stack->a = NULL;
-	stack->b = NULL;
+	stack = get_struct();
+	init_struct(stack);
+	i = 0;
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
 	{
-		argv  = ft_split(argv[1], ' ');
+		argv = ft_split(argv[1], ' ');
 		argc = 0;
 	}
-	if (!parser(argc, argv, stack))
+	if (!parser(argc, argv, stack) || !prepare_sort(stack))
 		ft_stderror();
-	if (!prepare_sort(stack))
-		ft_stderror();
-	//print_inttab(stack->sorted, stack->elems);
-	//printf("pivots = ");
-	//print_inttab(stack->pivots, stack->chunks - 1);
-	//write(1, "\n", 1);
-	//how_to_sort(stack);
-	//print_stack(stack->a, 'a');
-	//print_stack(stack->b, 'b');
+	//print_inttab(stack->sorted, stack->elems);///
+	//print_inttab(stack->pivots, stack->chunks - 1);///
 	how_to_sort(stack);
-	//print_stack(stack->a, 'a');
+	print_stack(stack->a, 'a');
 	//print_stack(stack->b, 'b');
+	free_everything(stack);
 	return (0);
 }

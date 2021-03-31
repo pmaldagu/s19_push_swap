@@ -6,20 +6,21 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:52:45 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/09 15:00:28 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:34:37 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *join;
+	int		i;
+	int		j;
+	char	*join;
 
 	i = ft_strlen(s1) + ft_strlen(s2);
-	if (!(join = (char *)malloc(i + 1)))
+	join = (char *)malloc(i + 1);
+	if (!join)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -40,7 +41,7 @@ char *ft_strjoin(char *s1, char *s2)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	if (!s1 || !s2)
@@ -50,7 +51,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int					i;
 	int					sign;
@@ -79,7 +80,7 @@ int			ft_atoi(const char *str)
 
 void	ft_memset(char *arg, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -89,9 +90,9 @@ void	ft_memset(char *arg, int size)
 	}
 }
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str && str[i])

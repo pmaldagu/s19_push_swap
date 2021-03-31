@@ -6,41 +6,40 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:36:29 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 12:02:06 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:46:28 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_H
-# define PUSH_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	int				integer;
 	struct s_stack	*next;
-	struct s_stack	*previous;;
-}					t_stack;
+	struct s_stack	*previous;
+}	t_stack;
 
-typedef struct		s_mem
+typedef struct s_mem
 {
 	t_stack			*a;
 	t_stack			*b;
 	int				elems;
 	int				*sorted;
 	int				chunks;
-	int 			size;
+	int				size;
 	int				*pivots;
-	int				debug;
-}					t_mem;
+}	t_mem;
 
 /*
 ** Debug
 */
 
-void				print_inttab(int *tab, int isze);
+void				print_inttab(int *tab, int size);
 void				print_stack(t_stack *to_print, char which);
 
 /*
@@ -71,12 +70,14 @@ int					push(t_stack **first, t_stack **second);
 int					swap(t_stack **first, t_stack **useless);
 int					rotate(t_stack **first, t_stack **useless);
 int					reverse_rotate(t_stack **first, t_stack **useless);
-int					instruction(t_mem *stack, int (*ope)(t_stack **, t_stack **), char option);
+int					instruction(t_mem *stack,
+						int (*ope)(t_stack **, t_stack **), char option);
 
 /*
 ** Parser
 */
 
+int					free_argv(char ***argv, int malloc);
 int					only_digit(char *arg);
 int					add_back(t_stack **a, int to_add);
 int					parser(int argc, char **argv, t_mem *stack);
@@ -85,7 +86,7 @@ int					parser(int argc, char **argv, t_mem *stack);
 ** Prepare
 */
 
-int					get_nbr_chink(int size);
+int					get_nbr_chunk(int size);
 int					find_pivots(t_mem *stack);
 int					sorting(t_mem *stack);
 int					prepare_sort(t_mem *stack);
@@ -113,17 +114,18 @@ int					push_b(t_mem *stack);
 ** Sort
  */
 
-int					push_big_pp(t_mem *stack);
-int					reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option);
-int					push_big_pp(t_mem *stack);
-int					push_chunks(t_mem *stack);
+int					reverse_or_not(t_mem *stack, t_stack *tmp, int pos,
+						char option);
+int					push_a(t_mem *stack);
 int					big_sort(t_mem *stack);
 
 /*
 ** Main
 */
 
-t_mem				*get_stack(void);
+void				init_struct(t_mem *stack);
+t_mem				*get_struct(void);
+void				free_everything(t_mem *stack);
 void				ft_stderror(void);
 
 #endif

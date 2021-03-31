@@ -1,41 +1,8 @@
 #include "./push_swap.h"
 
-int push_chunks(t_mem *stack)
+int	reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option)
 {
-	int i;
-	int j;
-	int size;
-
-	size = stack->elems;
-	i = 0;
-	while (size % stack->elems)
-		size++;
-	size /= stack->chunks;
-	while (i < stack->chunks - 1)
-	{
-		j = 0;
-		while (j <= size)
-		{
-			//printf("pivot = %i\n", stack->pivots[i]);
-			if (stack->a->integer <= stack->pivots[i])
-			{
-				//printf("integer = %i\n", stack->a->integer);
-				instruction(stack, push, 'b');
-				j++;
-			}
-			else
-				instruction(stack, rotate, 'a');
-		}
-		i++;
-	}
-	while (stack->a)
-		instruction(stack, push, 'b');
-	return (1);
-}
-
-int reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (tmp)
@@ -62,12 +29,12 @@ int reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option)
 	return (1);
 }
 
-int push_big_pp(t_mem *stack)
+int	push_a(t_mem *stack)
 {
-	int i;
-	t_stack *tmp;
-	int	pos;
-	int high;
+	int		i;
+	t_stack	*tmp;
+	int		pos;
+	int		high;
 
 	while (stack->b)
 	{
@@ -82,20 +49,18 @@ int push_big_pp(t_mem *stack)
 				high = tmp->integer;
 				pos = i;
 			}
-			//printf("high = %i\n", high);
 			tmp = tmp->next;
 			i++;
 		}
-		reverse_or_not(stack, stack->b, pos, 'b');/////////
+		reverse_or_not(stack, stack->b, pos, 'b');
 		instruction(stack, push, 'a');
 	}
 	return (1);
 }
 
-int big_sort(t_mem *stack)
+int	big_sort(t_mem *stack)
 {
-	//push_chunks(stack);
 	sort_opti(stack);
-	push_big_pp(stack);
+	push_a(stack);
 	return (1);
 }

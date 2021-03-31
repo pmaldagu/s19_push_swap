@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:12:03 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/29 11:45:37 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:16:02 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_putnbr(int n)
 
 void	print_inttab(int *tab, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -51,7 +51,7 @@ void	print_inttab(int *tab, int size)
 
 void	print_stack(t_stack *to_print, char which)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = to_print;
 	write(1, "Stack ", 6);

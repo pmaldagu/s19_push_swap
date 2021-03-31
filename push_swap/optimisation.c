@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:06:03 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:25:22 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:52:10 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 int	who_is_the_nearest(t_mem *stack, int pos_pivot)
 {
-	t_stack *tmp;
-	int hold_first;
-	int hold_second;
-	int	i;
-	int prev;
+	t_stack	*tmp;
+	int		hold_first;
+	int		hold_second;
+	int		i;
+	int		prev;
 
 	tmp = stack->a;
 	hold_first = -1;
@@ -61,9 +61,9 @@ int	who_is_the_nearest(t_mem *stack, int pos_pivot)
 		return (hold_second);
 }
 
-int nearest_by_pair(t_mem *stack, int pos_pivot, int *rb)
+int	nearest_by_pair(t_mem *stack, int pos_pivot, int *rb)
 {
-	int pos;
+	int	pos;
 	int pos_next;
 	int nb_ope;
 	int nb_ope_next;
@@ -99,17 +99,10 @@ int nearest_by_pair(t_mem *stack, int pos_pivot, int *rb)
 
 int	double_rotation(t_mem *stack, int pos_pivot, int rb)
 {
-	int prev_pivot;
-	int r;
+	int	prev_pivot;
+	int	r;
 
 	r = nearest_by_pair(stack, pos_pivot, &rb);
-	//if (who_is_the_nearest(stack, pos_pivot) < (stack->elems / 2) && rb
-	//		&& stack->b && stack->b->integer <= stack->pivots[pos_pivot]
-	//		&& stack->b->next && stack->b->next->integer > stack->pivots[pos_pivot])
-	//	instruction(stack, rotate, 'r');
-	//else if (rb && stack->b && stack->b->integer <= stack->pivots[pos_pivot]
-	//		&& stack->b->next && stack->b->next->integer > stack->pivots[pos_pivot])
-	//	instruction(stack, rotate, 'b');
 	if (pos_pivot >= stack->chunks - 2)
 		return (1);
 	if (r > 0 && r <= (stack->elems / 2) && stack->b 
@@ -124,41 +117,30 @@ int	double_rotation(t_mem *stack, int pos_pivot, int rb)
 
 int	push_b(t_mem *stack)
 {
-	int to_push;
-	int pos_pivot;
-	int pos;
+	int	to_push;
+	int	pos_pivot;
+	int	pos;
 	int	rb;
-	int debug;
 
 	pos_pivot = -2;
 	to_push = 0;
 	rb = 0;
-	debug = 0;
 	while (stack->a)
 	{
 		if (rb)
 			rb--;
 		if (!to_push)
 		{
-			//write(1, "REFILL\n", 7);
 			pos_pivot += 2;
 			to_push += (stack->size * 2);
-			//printf("to_push = %i\n", stack->size);
-			//if (pos_pivot + 1 < stack->chunks - 1)
-			//	to_push += stack->size;
 		}
 		pos = nearest_by_pair(stack, pos_pivot, &rb);
 		if (pos > 0)
 			reverse_or_not(stack, stack->a, pos, 'a');
-		//if (stack->a->integer <= stack->pivots[pos_pivot])
-		//{
-		//	write(1, "INC--\n", 6);
-			to_push--;
-		//}
+		to_push--;
 		instruction(stack, push, 'b');
 		//printf("pivot = %i\n", stack->pivots[pos_pivot]);
 		double_rotation(stack, pos_pivot, rb);
-		debug++;
 	}
 	return (1);
 }

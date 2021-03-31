@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:16:21 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:31:24 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 	//print_stack(stack->a, 'a');
 	//print_stack(stack->b, 'b');
 	how_to_sort(stack);
-	print_stack(stack->a, 'a');
-	print_stack(stack->b, 'b');
+	//print_stack(stack->a, 'a');
+	//print_stack(stack->b, 'b');
 	return (0);
 }

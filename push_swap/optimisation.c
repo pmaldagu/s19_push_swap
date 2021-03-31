@@ -6,13 +6,15 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:06:03 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 16:07:53 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:25:22 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
 //4 2 1 3
+//
+//4 3 2 1
 
 // 0 1 2 | 3 4 5 | 6 7 8 | 9 10
 
@@ -32,7 +34,7 @@ int	who_is_the_nearest(t_mem *stack, int pos_pivot)
 	//printf("pivot = %i\n", stack->pivots[pos_pivot]);
 	if (pos_pivot > 0)
 		prev = stack->pivots[pos_pivot - 1];
-	while (tmp && pos_pivot < stack->chunks)
+	while (tmp && pos_pivot < stack->chunks - 1)
 	{
 		if (tmp->integer <= stack->pivots[pos_pivot] && tmp->integer > prev)
 		{
@@ -44,7 +46,7 @@ int	who_is_the_nearest(t_mem *stack, int pos_pivot)
 		i++;
 	}
 	i++;
-	while (tmp)
+	while (tmp && pos_pivot < stack->chunks - 1)
 	{
 		if (tmp->integer <= stack->pivots[pos_pivot] && tmp->integer > prev)
 			hold_second = i;
@@ -108,6 +110,8 @@ int	double_rotation(t_mem *stack, int pos_pivot, int rb)
 	//else if (rb && stack->b && stack->b->integer <= stack->pivots[pos_pivot]
 	//		&& stack->b->next && stack->b->next->integer > stack->pivots[pos_pivot])
 	//	instruction(stack, rotate, 'b');
+	if (pos_pivot >= stack->chunks - 2)
+		return (1);
 	if (r > 0 && r <= (stack->elems / 2) && stack->b 
 			&& stack->b->integer <= stack->pivots[pos_pivot] && stack->b->next 
 			&& stack->b->next->integer > stack->pivots[0])

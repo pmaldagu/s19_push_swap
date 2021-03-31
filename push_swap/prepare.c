@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:44:38 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/29 13:48:24 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:14:58 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int     get_nbr_chunck(int size)
 {
+	if (size < 10)
+		return (2);
     if (size < 99)
         return (4);
     else if (size < 495)
-        return (6);
+        return (8);
     else
-        return (11);
+        return (18);
 }
 
 int	find_pivots(t_mem *stack)

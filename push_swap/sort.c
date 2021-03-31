@@ -43,7 +43,7 @@ int reverse_or_not(t_mem *stack, t_stack *tmp, int pos, char option)
 		tmp = tmp->next;
 		i++;
 	}
-	if (pos < (i / 2))
+	if (pos <= (i / 2))
 	{
 		while (pos)
 		{

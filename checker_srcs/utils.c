@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:52:45 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/04/01 14:25:57 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 17:39:35 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (value < 2147483660 && str[i] >= '0' && str[i] <= '9')
 	{
 		value = ((value * 10) + (str[i] - 48));
 		i++;
 	}
-	if (value > 2147483648 && value > 9223372036854775807)
+	if ((value > 2147483648 && sign == 1) || (value > 2147483647 && sign == -1))
 		ft_stderror();
 	return (value * sign);
 }

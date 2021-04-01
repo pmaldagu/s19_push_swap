@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/04/01 17:02:09 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 17:28:14 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ int	main(int argc, char **argv)
 		ft_stderror();
 	if (!prompt(stack))
 		ft_stderror();
-	print_stack(stack->a, 'a');
 	return (0);
 }

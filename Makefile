@@ -1,12 +1,12 @@
 all:
-	make -C ./checker
-	mv ./checker/checker .
-	make -C ./push_swap
-	mv ./push_swap/push_swap
+	make -C ./checker_srcs
+	mv ./checker_srcs/checker .
+	make -C ./push_swap_srcs
+	mv ./push_swap_srcs/push_swap .
 
 clean:
-	make -C ./checker clean
-	make -C ./push_swap clean
+	make -C ./checker_srcs clean
+	make -C ./push_swap_srcs clean
 
 fclean: clean
 	rm -rf checker

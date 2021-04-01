@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/04/01 17:01:50 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 18:36:44 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	is_instruction(char *input, t_mem *stack)
 	else if (!ft_strcmp(input, "rra"))
 		return (instruction(stack, &reverse_rotate, 'a'));
 	else if (!ft_strcmp(input, "rrb"))
-		return (instruction(stack, &reverse_rotate, 'a'));
+		return (instruction(stack, &reverse_rotate, 'b'));
 	else if (!ft_strcmp(input, "rrr"))
-		return (instruction(stack, &reverse_rotate, 'a'));
+		return (instruction(stack, &reverse_rotate, 'r'));
 	else
 		return (0);
 }

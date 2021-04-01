@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:44:38 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 18:27:50 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:43:45 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_nbr_chunck(int size)
 	if (size < 99)
 		return (5);
 	else if (size < 495)
-		return (8);
+		return (7);
 	else
 		return (17);
 }

@@ -40,7 +40,7 @@ int	push_a(t_mem *stack)
 	{
 		i = 0;
 		tmp = stack->b;
-		high = -1;
+		high = stack->sorted[0];
 		pos = 0;
 		while (tmp)
 		{
@@ -60,7 +60,7 @@ int	push_a(t_mem *stack)
 
 int	big_sort(t_mem *stack)
 {
-	sort_opti(stack);
+	push_b(stack);
 	push_a(stack);
 	return (1);
 }

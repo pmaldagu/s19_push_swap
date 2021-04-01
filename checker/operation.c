@@ -6,13 +6,13 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:36:55 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/10 11:54:39 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:37:44 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./checker.h"
 
-int			push(t_stack **first, t_stack **second)
+int	push(t_stack **first, t_stack **second)
 {
 	t_stack	*tmp;
 
@@ -25,7 +25,7 @@ int			push(t_stack **first, t_stack **second)
 	return (1);
 }
 
-int			swap(t_stack **first, t_stack **useless)
+int	swap(t_stack **first, t_stack **useless)
 {
 	t_stack	*swap;
 
@@ -39,7 +39,7 @@ int			swap(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			reverse_rotate(t_stack **first, t_stack **useless)
+int	reverse_rotate(t_stack **first, t_stack **useless)
 {
 	t_stack	*tmp;
 	t_stack	*end;
@@ -59,7 +59,7 @@ int			reverse_rotate(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			rotate(t_stack **first, t_stack **useless)
+int	rotate(t_stack **first, t_stack **useless)
 {
 	t_stack	*tmp;
 	t_stack	*second;
@@ -78,18 +78,9 @@ int			rotate(t_stack **first, t_stack **useless)
 	return (1);
 }
 
-int			instruction(t_mem *stack,
-				int (*ope)(t_stack **, t_stack **), char option)
+int	instruction(t_mem *stack,
+		int (*ope)(t_stack **, t_stack **), char option)
 {
-	if ((*ope) == &push)
-	{
-		if (stack->empty == -1)
-			stack->empty = 0;
-		if (option == 'a' && stack->empty != 0)
-			stack->empty--;
-		else if (option == 'b')
-			stack->empty++;
-	}
 	if (option == 'a')
 		(*ope)(&stack->a, &stack->b);
 	else if (option == 'b')

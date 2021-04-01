@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:36:29 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 18:46:28 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:06:24 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,11 @@ int					how_to_sort(t_mem *stack);
 ** Optimsation
  */
 
-int					who_is_the_nearest(t_mem *stack, int pos_pivot);
-int					nearest_by_pair(t_mem *stack, int pos_pivot, int *rb);
-int					sort_opti(t_mem *stack);
+int					in_the_beginning(t_mem *stack, t_stack **tmp,
+						int pos_pivot, int *hold_first);
+int					who_is_the_nearest(t_mem *stack, t_stack *tmp,
+						int pos_pivot);
+int					nearest_by_pair(t_mem *stack, int pos_pivot);
 int					push_b(t_mem *stack);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:36:29 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/10 11:05:00 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 16:55:18 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct		s_stack
+typedef struct s_stack
 {
 	int				integer;
 	struct s_stack	*next;
 }					t_stack;
 
-typedef struct		s_mem
+typedef struct s_mem
 {
 	t_stack			*a;
 	t_stack			*b;
-	int				empty;
-	int				debug;
 }					t_mem;
 
 /*
@@ -74,19 +72,19 @@ int					instruction(t_mem *stack,
 ** Input
 */
 
-int					check_ko(t_stack *a);
+int					check_ko(t_stack *a, t_stack *b);
 int					is_instruction(char *input, t_mem *stack);
-int					is_endl(char *buf);
-char				*get_line(void);
+int					get_line(char **line);
 int					prompt(t_mem *stack);
 
 /*
 ** Parser
 */
 
+int					free_argv(char ***argv, int malloc);
 int					only_digit(char *arg);
 int					add_back(t_stack **a, int to_add);
-int					parser(int argc, char **argv, t_stack **a);
+int					parser(int argc, char **argv, t_mem *stack);
 
 /*
 ** Quiscksort (TEST)
@@ -96,7 +94,9 @@ int					parser(int argc, char **argv, t_stack **a);
 ** Main
 */
 
-t_mem				*get_stack(void);
+void				init_struct(t_mem *stack);
+t_mem				*get_struct(void);
+void				free_everything(t_mem *stack);
 void				ft_stderror(void);
 
 #endif

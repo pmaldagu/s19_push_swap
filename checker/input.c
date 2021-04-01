@@ -6,17 +6,22 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/10 11:53:36 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 17:01:50 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./checker.h"
 
-int		check_ko(t_stack *a)
+int	check_ko(t_stack *a, t_stack *b)
 {
-	int		previous;
+	int	previous;
 
 	previous = 0;
+	if (b)
+	{
+		write(1, "KO\n", 3);
+		return (1);
+	}
 	while (a)
 	{
 		previous = a->integer;
@@ -31,7 +36,7 @@ int		check_ko(t_stack *a)
 	return (0);
 }
 
-int		is_instruction(char *input, t_mem *stack)
+int	is_instruction(char *input, t_mem *stack)
 {
 	if (!ft_strcmp(input, "sa"))
 		return (instruction(stack, &swap, 'a'));
@@ -59,59 +64,52 @@ int		is_instruction(char *input, t_mem *stack)
 		return (0);
 }
 
-int		is_endl(char *buf)
+int	get_line(char **line)
 {
-	int		i;
+	char	buf[2];
+	char	*tmp;
+	int		ret;
 
-	i = 0;
-	while (buf && buf[i])
+	(*line) = NULL;
+	ft_memset(buf, 2);
+	while (buf[0] != '\n')
 	{
-		if (buf[i] == '\n')
+		ft_memset(buf, 2);
+		ret = read(0, buf, 1);
+		if (!ret)
+		{
+			free((*line));
 			return (1);
-		i++;
+		}
+		if (buf[0] != '\n')
+		{
+			tmp = (*line);
+			(*line) = ft_strjoin((*line), buf);
+			free(tmp);
+		}
 	}
 	return (0);
 }
 
-char	*get_line(void)
-{
-	char	buf[2];
-	char	*tmp;
-	char	*line;
-	int		ret;
-
-	line = NULL;
-	ft_memset(buf, 2);
-	while ((ret = read(0, buf, 1)) && buf[0] != '\n')
-	{
-		tmp = line;
-		line = ft_strjoin(line, buf);
-		free(tmp);
-		ft_memset(buf, 2);
-	}
-	return (line);
-}
-
-int		prompt(t_mem *stack)
+int	prompt(t_mem *stack)
 {
 	char	*line;
+	int		stop;
 
 	line = NULL;
-	while (stack->empty != 0)
+	stop = 0;
+	while (1)
 	{
-		line = get_line();
+		stop = get_line(&line);
+		if (stop)
+			break ;
 		if (!is_instruction(line, stack))
 		{
 			free(line);
 			return (0);
 		}
-		if (stack->debug)
-		{
-			print_stack(stack->a, 'a');
-			print_stack(stack->b, 'b');
-		}
 		free(line);
 	}
-	check_ko(stack->a);
+	check_ko(stack->a, stack->b);
 	return (1);
 }

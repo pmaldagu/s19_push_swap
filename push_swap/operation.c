@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:36:55 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 18:32:22 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:42:06 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,5 @@ int	instruction(t_mem *stack, int (*ope)(t_stack **, t_stack **), char option)
 		(*ope)(&stack->a, &stack->b);
 		(*ope)(&stack->b, &stack->a);
 	}
-	//print_stack(stack->a, 'a');
-	//print_stack(stack->b, 'b');
 	return (1);
 }

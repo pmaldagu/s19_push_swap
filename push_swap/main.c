@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:05:20 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/31 17:58:44 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:08:46 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_stderror(void)
 int	main(int argc, char **argv)
 {
 	t_mem	*stack;
-	int	i;
+	int		i;
 
 	stack = get_struct();
 	init_struct(stack);
@@ -77,11 +77,7 @@ int	main(int argc, char **argv)
 	}
 	if (!parser(argc, argv, stack) || !prepare_sort(stack))
 		ft_stderror();
-	//print_inttab(stack->sorted, stack->elems);///
-	//print_inttab(stack->pivots, stack->chunks - 1);///
 	how_to_sort(stack);
-	print_stack(stack->a, 'a');
-	//print_stack(stack->b, 'b');
 	free_everything(stack);
 	return (0);
 }

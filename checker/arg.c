@@ -6,7 +6,7 @@
 /*   By: pmaldagu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 15:12:07 by pmaldagu          #+#    #+#             */
-/*   Updated: 2021/03/10 11:50:57 by pmaldagu         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:11:52 by pmaldagu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_megafree(char **tab, int y)
 	return (NULL);
 }
 
-int		ft_len_to_sep(char const *str, char c)
+int	ft_len_to_sep(char const *str, char c)
 {
 	int		i;
 
@@ -30,10 +30,10 @@ int		ft_len_to_sep(char const *str, char c)
 	return (i);
 }
 
-int		ft_count_words(char const *str, char c)
+int	ft_count_words(char const *str, char c)
 {
-	int count;
-	int pos;
+	int	count;
+	int	pos;
 
 	count = 1;
 	if (str[0] == c)
@@ -54,7 +54,8 @@ char	*ft_tmp_str(const char *str, char c)
 	char	*tmp;
 
 	i = 0;
-	if ((tmp = malloc(sizeof(char) * (ft_len_to_sep(str, c) + 1))) != 0)
+	tmp = malloc(sizeof(char) * (ft_len_to_sep(str, c) + 1));
+	if (tmp)
 	{
 		while (str[i] != c && str[i] != '\0')
 		{
@@ -75,15 +76,13 @@ char	**ft_split(char const *str, char c)
 
 	i = 0;
 	y = 0;
-	if (str == NULL)
-		return (NULL);
-	if (!(split = malloc(sizeof(char *) * (ft_count_words(str, c) + 1))))
-		return (NULL);
-	while (str[i] != '\0')
+	split = malloc(sizeof(char *) * (ft_count_words(str, c) + 1));
+	while (split && str && str[i] != '\0')
 	{
 		if (str[i] != c)
 		{
-			if (!(split[y] = ft_tmp_str(&str[i], c)))
+			split[y] = ft_tmp_str(&str[i], c);
+			if (!split[y])
 				return (ft_megafree(split, y));
 			i = i + ft_len_to_sep(&str[i], c);
 			y++;
@@ -91,6 +90,7 @@ char	**ft_split(char const *str, char c)
 		else if (str[i] == c)
 			i++;
 	}
-	split[y] = NULL;
+	if (split)
+		split[y] = NULL;
 	return (split);
 }

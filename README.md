@@ -9,7 +9,7 @@ optimized data sorting.
 
 ## Status
 
-Succes: 100%
+Succes: 94%
 
 ## How to
 
